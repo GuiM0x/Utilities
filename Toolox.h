@@ -14,10 +14,10 @@
 
 namespace Toolox {
 	
-	///// DICE ROLL GENERATOR
-	rollTheDice(int valmin, int valmax);
+    ///// DICE ROLL GENERATOR
+    rollTheDice(int valmin, int valmax);
 	
-	///// TEXT FILE TO STRING
+    ///// TEXT FILE TO STRING
     std::string textFileToString(const std::string& filePath);
 
     ///// TEXT FILE TO STRING
