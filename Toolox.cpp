@@ -12,14 +12,14 @@ int Toolox::rollTheDice(int valmin, int valmax)
 /////////// TEXT FILE TO STRING
 std::string Toolox::textFileToString(const std::string& filePath)
 {
-    std::ifstream fichier(filePath);
+    std::ifstream file(filePath);
     std::string line, text;
 
-    if(fichier.is_open()){
-        while(std::getline(fichier, line))
+    if(file.is_open()){
+        while(std::getline(file, line))
             text += (line + '\n');
 
-        fichier.close();
+        file.close();
     }
 
     return text;
@@ -28,14 +28,14 @@ std::string Toolox::textFileToString(const std::string& filePath)
 /////////// TEXT FILE TO STRING
 std::string& Toolox::textFileToString(const std::string& filePath, std::string& str)
 {
-    std::ifstream fichier(filePath);
+    std::ifstream file(filePath);
     std::string line;
 
-    if(fichier.is_open()){
-        while(std::getline(fichier, line))
+    if(file.is_open()){
+        while(std::getline(file, line))
             str += (line + '\n');
 
-        fichier.close();
+        file.close();
     }
 
     return str;
@@ -52,11 +52,13 @@ std::string& Toolox::stringToLower(std::string& str)
 /////////// ERASE PUNCTUATION
 std::string& Toolox::erasePunctuation(std::string& str)
 {
-    str += ' '; // Oblige sinon bug dans le cas où une ponctuation se trouverait en fin de chaine
+    str += ' '; // Avoid error in case of punctuation at the end of the string
 
-    for(auto it = str.begin(); it != str.end(); ++it)
-        if(!(std::isalpha(*it)) && *it != ' ' && *it != '\n') // On conserve espace et saut de ligne aussi
+    for(auto it = str.begin(); it != str.end(); ++it) {
+		// Erase if : !alpha AND !space AND !eol
+        if(!(std::isalpha(*it)) && *it != ' ' && *it != '\n')
             str.erase(it);
+	}
 
     return str;
 }
