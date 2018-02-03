@@ -98,11 +98,14 @@ public:
     { return ((row*m_cols)+col); }
 
     /// ELEMENTS ACCESS
-    T& operator[](size_type id) const;
-    T& operator()(size_type row, size_type col) const;
+    T& operator[](size_type id);
+    T& operator()(size_type row, size_type col);
+    const T& operator[](size_type id) const;
+    const T& operator()(size_type row, size_type col) const;
 
     /// MODIFIERS
     Matrix<T>& swap(Matrix<T>&);
+    void clear() noexcept;
 
     /// FRIEND OPERATORS
     friend bool operator==<T>(const Matrix<T>&, const Matrix<T>&);
@@ -168,7 +171,7 @@ Matrix<T>::Matrix(Matrix<T>&& other) noexcept :
 
 }
 //////////////////////////////////////////////////////////////////
-/////// FUNCTION(S)
+/////// MODIFIERS
 template<typename T>
 Matrix<T>& Matrix<T>::swap(Matrix<T>& other)
 {
@@ -180,29 +183,35 @@ Matrix<T>& Matrix<T>::swap(Matrix<T>& other)
 }
 
 template<typename T>
-void Matrix<T>::check(size_type i, const std::string& msg) const
+void Matrix<T>::clear() noexcept
 {
-    if(i >= m_data->size())
-        throw std::out_of_range(msg);
-}
-
-template<typename T>
-void Matrix<T>::check(size_type row, size_type col, const std::string& msg) const
-{
-    if((row*m_cols)+col >= m_data->size())
-        throw std::out_of_range(msg);
+    m_data->clear();
+    m_rows = 0;
+    m_cols = 0;
 }
 //////////////////////////////////////////////////////////////////
 /////// ELEMENT ACCESS
 template<typename T>
-T& Matrix<T>::operator[](size_type id) const
+T& Matrix<T>::operator[](size_type id)
 {
     check(id, "Access out of range");
     return (*m_data)[id];
 }
 
 template<typename T>
-T& Matrix<T>::operator()(size_type row, size_type col) const
+T& Matrix<T>::operator()(size_type row, size_type col)
+{
+    check(row, col, "Access out of range");
+    return (*m_data)[(row*m_cols)+col];
+}
+template<typename T>
+const T& Matrix<T>::operator[](size_type id) const
+{
+    check(id, "Access out of range");
+    return (*m_data)[id];
+}
+template<typename T>
+const T& Matrix<T>::operator()(size_type row, size_type col) const
 {
     check(row, col, "Access out of range");
     return (*m_data)[(row*m_cols)+col];
@@ -233,6 +242,21 @@ Matrix<T>& Matrix<T>::operator=(Matrix<T>&& other) noexcept
     return *this;
 }
 //////////////////////////////////////////////////////////////////
+/////// FUNCTION(S)
+template<typename T>
+void Matrix<T>::check(size_type i, const std::string& msg) const
+{
+    if(i >= m_data->size())
+        throw std::out_of_range(msg);
+}
+
+template<typename T>
+void Matrix<T>::check(size_type row, size_type col, const std::string& msg) const
+{
+    if((row*m_cols)+col >= m_data->size())
+        throw std::out_of_range(msg);
+}
+//////////////////////////////////////////////////////////////////
 /////// OPERATOR(S)
 //(operator<< Provisoire)
 template<typename T>
@@ -245,7 +269,7 @@ std::ostream& operator<<(std::ostream& os, const Matrix<T>& matrix)
            << '\n';
         for(std::size_t i=0; i<matrix.m_rows; ++i){
             for(std::size_t j=0; j<matrix.m_cols; ++j){
-                os << const_cast<Matrix<T>&>(matrix)(i, j) << ' ';
+                os << matrix(i, j) << ' ';
             }
             os << '\n';
         }
