@@ -3,6 +3,7 @@
 
 #include <vector>
 #include <memory>
+#include <iterator>
 #include <utility>
 
 template<typename> class Matrix;
@@ -29,7 +30,11 @@ private:
     };
 
 public:
-    typedef typename std::vector<T>::size_type size_type;
+    typedef typename std::vector<T>::size_type              size_type;
+    typedef typename std::vector<T>::iterator               iterator;
+    typedef typename std::vector<T>::const_iterator         const_iterator;
+    typedef typename std::vector<T>::reverse_iterator       reverse_iterator;
+    typedef typename std::vector<T>::const_reverse_iterator const_reverse_iterator;
 
     /// CONSTRUCTORS
     Matrix();
@@ -41,19 +46,54 @@ public:
     Matrix<T>& operator=(Matrix<T>&&) noexcept;
     ~Matrix() = default;
 
+    /// ITERATORS
+    // begin
+    iterator begin() noexcept
+    { return m_data->begin(); }
+    const_iterator begin() const noexcept
+    { return m_data->cbegin(); }
+    // end
+    iterator end() noexcept
+    { return m_data->end(); }
+    const_iterator end() const noexcept
+    { return m_data->cend(); }
+    // rbegin
+    reverse_iterator rbegin() noexcept
+    { return m_data->rbegin(); }
+    const_reverse_iterator rbegin() const noexcept
+    { return m_data->crbegin(); }
+    // rend
+    reverse_iterator rend() noexcept
+    { return m_data->rend(); }
+    const_reverse_iterator rend() const noexcept
+    { return m_data->crend(); }
+    // cbegin
+    const_iterator cbegin() const noexcept
+    { return m_data->cbegin(); }
+    // cend
+    const_iterator cend() const noexcept
+    { return m_data->cend(); }
+    // crbegin
+    const_reverse_iterator crbegin() const noexcept
+    { return m_data->crbegin(); }
+    // crend
+    const_reverse_iterator crend() const noexcept
+    { return m_data->crend(); }
+
     /// CAPACITY
+    // size
     size_type size() const
     { return m_data->size(); }
-
+    // empty
     bool empty() const
     { return m_data->empty(); }
-
+    // dimension
     Coord dimension() const
     { return Coord(m_rows, m_cols); }
-
+    // coord by id
     Coord getCoordByID(size_type id) const
     { return Coord{id/m_cols, id%m_rows}; }
-
+    // id by coord
     size_type getIDByCoord(size_type row, size_type col) const
     { return ((row*m_cols)+col); }
 
