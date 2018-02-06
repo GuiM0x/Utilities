@@ -194,6 +194,7 @@ void Matrix<T>::clear() noexcept
 template<typename T>
 T& Matrix<T>::operator[](size_type id)
 {
+    check(0, "Access on empty matrix");
     check(id, "Access out of range");
     return (*m_data)[id];
 }
@@ -201,18 +202,21 @@ T& Matrix<T>::operator[](size_type id)
 template<typename T>
 T& Matrix<T>::operator()(size_type row, size_type col)
 {
+    check(0, "Access on empty matrix");
     check(row, col, "Access out of range");
     return (*m_data)[(row*m_cols)+col];
 }
 template<typename T>
 const T& Matrix<T>::operator[](size_type id) const
 {
+    check(0, "Access on empty matrix");
     check(id, "Access out of range");
     return (*m_data)[id];
 }
 template<typename T>
 const T& Matrix<T>::operator()(size_type row, size_type col) const
 {
+    check(0, "Access on empty matrix");
     check(row, col, "Access out of range");
     return (*m_data)[(row*m_cols)+col];
 }
