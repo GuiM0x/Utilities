@@ -12,7 +12,7 @@
 #include <map>
 
 
-namespace Toolox {
+namespace tox {
 	
     ///// DICE ROLL GENERATOR
     rollTheDice(int valmin, int valmax);
