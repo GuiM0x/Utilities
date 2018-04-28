@@ -36,6 +36,8 @@ public:
     typedef typename std::vector<T>::reverse_iterator       reverse_iterator;
     typedef typename std::vector<T>::const_reverse_iterator const_reverse_iterator;
 
+    // TO DO : Add assign with initializer list ?
+
     /// CONSTRUCTORS
     Matrix();
     Matrix(size_type rows, size_type cols, const T& val = T{});
@@ -266,23 +268,14 @@ void Matrix<T>::check(size_type row, size_type col, const std::string& msg) cons
 template<typename T>
 std::ostream& operator<<(std::ostream& os, const Matrix<T>& matrix)
 {
-    if(!matrix.empty()){
-        os << "Global size : " << matrix.size() << '\n'
-           << "Total Rows  : " << matrix.m_rows << '\n'
-           << "Total Cols  : " << matrix.m_cols << '\n'
-           << '\n';
-        for(std::size_t i=0; i<matrix.m_rows; ++i){
-            for(std::size_t j=0; j<matrix.m_cols; ++j){
-                os << matrix(i, j) << ' ';
-            }
-            os << '\n';
-        }
-        os << "--------------------------------";
-    }
-    else{
-        os << "Matrix empty.\n";
-        os << "--------------------------------";
-    }
+	if(!matrix.empty()){
+		for(std::size_t i=0; i<matrix.m_rows; ++i){
+			for(std::size_t j=0; j<matrix.m_cols; ++j){
+				os << "[" << matrix(i, j) << "]" << ' ';
+			}
+			os << '\n';
+		}
+	}
 
     return os;
 }
