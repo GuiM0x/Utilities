@@ -54,6 +54,7 @@ public:
     // TO DO : Add assign with initializer list ?
 
     /// CONSTRUCTORS
+	Matrix();
     Matrix(size_type rows, size_type cols, const T& val = T{});
     Matrix(std::initializer_list<std::initializer_list<T>> il);
     Matrix(const Matrix<T>&);
@@ -128,9 +129,7 @@ public:
     friend bool operator!=<T>(const Matrix<T>&, const Matrix<T>&);
     friend std::ostream& operator<<<T>(std::ostream&, const Matrix<T>&);
 
-private:
-	Matrix();
-	
+private:	
     std::shared_ptr<std::vector<T>> m_data;
     size_type m_rows = 0;
     size_type m_cols = 0;
