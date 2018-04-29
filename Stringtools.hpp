@@ -59,7 +59,7 @@ namespace stringtools {
 	}
 
 	/////////// TEXT FILE TO STRING
-	std::string Toolox::textFileToString(const std::string& filePath)
+	std::string textFileToString(const std::string& filePath)
 	{
 		std::ifstream file(filePath);
 		std::string line, text;
@@ -75,7 +75,7 @@ namespace stringtools {
 	}
 
 	/////////// TEXT FILE TO STRING
-	std::string& Toolox::textFileToString(const std::string& filePath, std::string& str)
+	std::string& textFileToString(const std::string& filePath, std::string& str)
 	{
 		std::ifstream file(filePath);
 		std::string line;
@@ -91,7 +91,7 @@ namespace stringtools {
 	}
 
 	/////////// STRING TO LOWER
-	std::string& Toolox::stringToLower(std::string& str)
+	std::string& stringToLower(std::string& str)
 	{
 		std::transform(str.begin(), str.end(), str.begin(), ::tolower);
 		
@@ -99,7 +99,7 @@ namespace stringtools {
 	}
 
 	/////////// ERASE PUNCTUATION
-	std::string& Toolox::erasePunctuation(std::string& str)
+	std::string& erasePunctuation(std::string& str)
 	{
 		str += ' '; // Avoid error in case of punctuation at the end of the string
 
@@ -113,7 +113,7 @@ namespace stringtools {
 	}
 
 	/////////// DISPLAY OCCUR IN STRING
-	std::ostream& Toolox::allOccurInString(std::ostream& os, std::string str, const bool& caseSensitive)
+	std::ostream& allOccurInString(std::ostream& os, std::string str, const bool& caseSensitive)
 	{
 		if(!caseSensitive)
 			stringToLower(str);
@@ -135,7 +135,7 @@ namespace stringtools {
 	}
 
 	/////////// DISPLAY OCCUR IN FILE
-	std::ostream& Toolox::allOccurInTextFile(std::ostream& os, const std::string& filePath, const bool& caseSensitive)
+	std::ostream& allOccurInTextFile(std::ostream& os, const std::string& filePath, const bool& caseSensitive)
 	{
 		std::string text = textFileToString(filePath);
 		allOccurInString(os, text, caseSensitive);
