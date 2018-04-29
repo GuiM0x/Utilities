@@ -1,3 +1,18 @@
+/////////////////////////////////////////////////////////////////////////////////////
+/*                                                                                 */
+/*   Matrix.hpp                                                                    */
+/*   -----------------------                                                       */
+/*   Author : Guit0x                                                               */
+/*                                                                                 */
+/*   Type            : template class                                              */
+/*   OS Dependencies : none                                                        */
+/*   Library Used    : STL                                                         */
+/*                                                                                 */
+/*   A simple class that hold a linear vector and behave like  a two dimensional   */
+/*   container.                                                                    */
+/*                                                                                 */
+/////////////////////////////////////////////////////////////////////////////////////
+
 #ifndef MATRIX_HPP_INCLUDED
 #define MATRIX_HPP_INCLUDED
 
