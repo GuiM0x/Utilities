@@ -1,6 +1,6 @@
 /////////////////////////////////////////////////////////////////////////////////////
 /*                                                                                 */
-/*   Stringtools.hpp                                                               */
+/*   Tools.hpp                                                                     */
 /*   -----------------------                                                       */
 /*   Author : Guit0x                                                               */
 /*                                                                                 */
@@ -8,12 +8,12 @@
 /*   OS Dependencies : none                                                        */
 /*   Library Used    : STL                                                         */
 /*                                                                                 */
-/*   A namespace containing tools for string (and text file).                      */
+/*   A namespace containing tools.                                                 */
 /*                                                                                 */
 /////////////////////////////////////////////////////////////////////////////////////
 
-#ifndef STRINGTOOLS_HPP
-#define STRINGTOOLS_HPP
+#ifndef TOOLS_HPP
+#define TOOLS_HPP
 
 #include <iostream>
 #include <random>
@@ -25,18 +25,10 @@
 #include <sstream>
 #include <map>
 
-
-namespace stringtools {
-	
-	///// DICE ROLL GENERATOR
-	int rollTheDice(int valmin, int valmax);
-	int rollTheDice(int valmin, int valmax)
-	{
-		static std::mt19937 generator{static_cast<unsigned>(time(nullptr))};
-		std::uniform_int_distribution<> dist{valmin, valmax};
-		
-		return dist(generator);
-	}
+/////////////////////////////////////////////////////////////////////////////////////
+//// String tool
+/////////////////////////////////////////////////////////////////////////////////////
+namespace stringtool {
 
 	///// TEXT FILE TO STRING
 	std::string textFileToString(const std::string& filePath);
@@ -130,4 +122,21 @@ namespace stringtools {
 	}
 }
 
-#endif // STRINGTOOLS_HPP
+/////////////////////////////////////////////////////////////////////////////////////
+//// Random tool
+/////////////////////////////////////////////////////////////////////////////////////
+namespace randomtool {
+	
+	///// DICE ROLL GENERATOR
+	int rollTheDice(int valmin, int valmax);
+	int rollTheDice(int valmin, int valmax)
+	{
+		static std::mt19937 generator{static_cast<unsigned>(time(nullptr))};
+		std::uniform_int_distribution<> dist{valmin, valmax};
+		
+		return dist(generator);
+	}
+	
+}
+
+#endif // TOOLS_HPP
