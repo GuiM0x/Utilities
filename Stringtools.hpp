@@ -28,29 +28,9 @@
 
 namespace stringtools {
 	
-    ///// DICE ROLL GENERATOR
-    rollTheDice(int valmin, int valmax);
-	
-    ///// TEXT FILE TO STRING
-    std::string textFileToString(const std::string& filePath);
-
-    ///// TEXT FILE TO STRING
-    std::string& textFileToString(const std::string& filePath, std::string& str);
-
-    ///// STRING TO LOWER
-    std::string& stringToLower(std::string& str);
-
-    ///// ERASE PUNCTUATION
-    std::string& erasePunctuation(std::string& str);
-
-    ///// DISPLAY OCCUR IN STRING
-    std::ostream& allOccurInString(std::ostream& os, std::string str, const bool& caseSensitive = true);
-
-    ///// DISPLAY OCCUR IN FILE
-    std::ostream& allOccurInTextFile(std::ostream& os, const std::string& filePath, const bool& caseSensitive = true);
-	
-	/////////// DICE ROLL GENERATOR
-	int Toolox::rollTheDice(int valmin, int valmax)
+	///// DICE ROLL GENERATOR
+	int rollTheDice(int valmin, int valmax);
+	int rollTheDice(int valmin, int valmax)
 	{
 		static std::mt19937 generator{static_cast<unsigned>(time(nullptr))};
 		std::uniform_int_distribution<> dist{valmin, valmax};
@@ -58,7 +38,8 @@ namespace stringtools {
 		return dist(generator);
 	}
 
-	/////////// TEXT FILE TO STRING
+	///// TEXT FILE TO STRING
+	std::string textFileToString(const std::string& filePath);
 	std::string textFileToString(const std::string& filePath)
 	{
 		std::ifstream file(filePath);
@@ -74,7 +55,8 @@ namespace stringtools {
 		return text;
 	}
 
-	/////////// TEXT FILE TO STRING
+	///// TEXT FILE TO STRING
+	std::string& textFileToString(const std::string& filePath, std::string& str);
 	std::string& textFileToString(const std::string& filePath, std::string& str)
 	{
 		std::ifstream file(filePath);
@@ -90,7 +72,8 @@ namespace stringtools {
 		return str;
 	}
 
-	/////////// STRING TO LOWER
+	///// STRING TO LOWER
+	std::string& stringToLower(std::string& str);
 	std::string& stringToLower(std::string& str)
 	{
 		std::transform(str.begin(), str.end(), str.begin(), ::tolower);
@@ -98,7 +81,8 @@ namespace stringtools {
 		return str;
 	}
 
-	/////////// ERASE PUNCTUATION
+	///// ERASE PUNCTUATION
+	std::string& erasePunctuation(std::string& str);
 	std::string& erasePunctuation(std::string& str)
 	{
 		str += ' '; // Avoid error in case of punctuation at the end of the string
@@ -112,7 +96,8 @@ namespace stringtools {
 		return str;
 	}
 
-	/////////// DISPLAY OCCUR IN STRING
+	///// DISPLAY OCCUR IN STRING
+	std::ostream& allOccurInString(std::ostream& os, std::string str, const bool& caseSensitive = true);
 	std::ostream& allOccurInString(std::ostream& os, std::string str, const bool& caseSensitive)
 	{
 		if(!caseSensitive)
@@ -134,7 +119,8 @@ namespace stringtools {
 		return os;
 	}
 
-	/////////// DISPLAY OCCUR IN FILE
+	///// DISPLAY OCCUR IN FILE
+	std::ostream& allOccurInTextFile(std::ostream& os, const std::string& filePath, const bool& caseSensitive = true);
 	std::ostream& allOccurInTextFile(std::ostream& os, const std::string& filePath, const bool& caseSensitive)
 	{
 		std::string text = textFileToString(filePath);
