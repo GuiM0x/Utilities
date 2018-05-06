@@ -17,7 +17,7 @@
 
 #include <iostream>
 #include <random>
-#include <time>
+#include <ctime>
 #include <algorithm>
 #include <functional>
 #include <string>
