@@ -7,6 +7,7 @@
 /*   Type            : template class                                              */
 /*   OS Dependencies : none                                                        */
 /*   Library Used    : STL                                                         */
+/*   Namespace       : gx                                                          */
 /*                                                                                 */
 /*   A simple class that hold a linear vector and behave like  a two dimensional   */
 /*   container.                                                                    */
@@ -20,6 +21,8 @@
 #include <memory>
 #include <iterator>
 #include <utility>
+
+namespace gx {
 
 template<typename> class Matrix;
 
@@ -54,7 +57,7 @@ public:
     // TO DO : Add assign with initializer list ?
 
     /// CONSTRUCTORS
-	Matrix();
+    Matrix();
     Matrix(size_type rows, size_type cols, const T& val = T{});
     Matrix(std::initializer_list<std::initializer_list<T>> il);
     Matrix(const Matrix<T>&);
@@ -306,5 +309,7 @@ bool operator!=(const Matrix<T>& lhs, const Matrix<T>& rhs)
 {
     return !(lhs == rhs);
 }
+
+} //namespace gx end !
 
 #endif // MATRIX_HPP_INCLUDED

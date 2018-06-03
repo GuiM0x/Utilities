@@ -7,6 +7,7 @@
 /*   Type            : Functions                                                   */
 /*   OS Dependencies : none                                                        */
 /*   Library Used    : STL                                                         */
+/*   Namespace       : gx                                                          */
 /*                                                                                 */
 /*   A namespace containing tools.                                                 */
 /*                                                                                 */
