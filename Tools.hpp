@@ -135,6 +135,24 @@ namespace gx {
 		
 		return dist(generator);
 	}
+	
+/////////////////////////////////////////////////////////////////////////////////////
+//// ANGLES
+/////////////////////////////////////////////////////////////////////////////////////
+
+	///// DEG To RAD
+	float degToRad(float angle_rad)
+	{
+		const float PI{3.141592};
+		return float{(angle_rad * PI) / 180.f};
+	}
+	
+	///// RAD TO DEG
+	float radToDeg(float angle_deg)
+	{
+		const float PI{3.141592};
+		return float{(angle_deg * 180.f) / PI};
+	}
 
 } // namsepace gx end !
 
