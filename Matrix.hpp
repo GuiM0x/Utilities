@@ -58,6 +58,9 @@ public:
     std::size_t size() const { return m_cells.size();  }
     std::size_t rows() const { return m_rows;          }
     std::size_t cols() const { return m_cols;          }
+	
+public:
+    void init(std::size_t rows, std::size_t cols, const T& val = T{});
 
 public:
     iterator begin()                 noexcept       { return m_cells.begin();   }
@@ -124,6 +127,12 @@ inline Matrix<T>& Matrix<T>::operator=(const std::initializer_list<std::initiali
 {
     *this = Matrix{il};
     return *this;
+}
+
+template<typename T>
+void Matrix<T>::init(std::size_t rows, std::size_t cols, const T& val)
+{
+	*this = Matrix{rows, cols, val};
 }
 
 template<typename T>
