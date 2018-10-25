@@ -26,26 +26,26 @@ class Matrix
 {
     ///////////////
 
-	friend std::ostream& operator<<(std::ostream& os, const Matrix& m){
-		if(!m.empty()){
-			for(unsigned i = 0; i < m.m_rows; ++i){
-				for(unsigned j = 0; j < m.m_cols; ++j){
-					os << m(i, j) << ' ';
-				}
-				os << '\n';
-			}
-		}
-		return os;
-	}
+    friend std::ostream& operator<<(std::ostream& os, const Matrix& m){
+        if(!m.empty()){
+            for(unsigned i = 0; i < m.m_rows; ++i){
+                for(unsigned j = 0; j < m.m_cols; ++j){
+                    os << m(i, j) << ' ';
+                }
+                os << '\n';
+            }
+        }
+        return os;
+    }
 
-	///////////////
+    ///////////////
 
-	using iterator               = typename std::vector<T>::iterator;
-	using const_iterator         = typename std::vector<T>::const_iterator;
-	using reverse_iterator       = typename std::vector<T>::reverse_iterator;
-	using const_reverse_iterator = typename std::vector<T>::const_reverse_iterator;
+    using iterator               = typename std::vector<T>::iterator;
+    using const_iterator         = typename std::vector<T>::const_iterator;
+    using reverse_iterator       = typename std::vector<T>::reverse_iterator;
+    using const_reverse_iterator = typename std::vector<T>::const_reverse_iterator;
 
-	///////////////
+    ///////////////
 
 public:
     Matrix() = delete;
@@ -54,10 +54,10 @@ public:
     Matrix<T>& operator=(const std::initializer_list<std::initializer_list<T>>&);
 
 public:
-	bool empty()       const { return m_cells.empty(); }
-	std::size_t size() const { return m_cells.size();  }
-	std::size_t rows() const { return m_rows;          }
-	std::size_t cols() const { return m_cols;          }
+    bool empty()       const { return m_cells.empty(); }
+    std::size_t size() const { return m_cells.size();  }
+    std::size_t rows() const { return m_rows;          }
+    std::size_t cols() const { return m_cols;          }
 
 public:
     iterator begin()                 noexcept       { return m_cells.begin();   }
@@ -74,26 +74,26 @@ public:
     const_reverse_iterator crend()   const noexcept { return m_cells.crend();   }
 
 public:
-	T& operator[](std::size_t n);
-	const T& operator[](std::size_t n) const;
-	T& operator()(std::size_t row, std::size_t col);
-	const T& operator()(std::size_t row, std::size_t col) const;
+    T& operator[](std::size_t n);
+    const T& operator[](std::size_t n) const;
+    T& operator()(std::size_t row, std::size_t col);
+    const T& operator()(std::size_t row, std::size_t col) const;
 
 private:
-	void checkAccess(std::size_t n) const;
+    void checkAccess(std::size_t n) const;
 
 private:
-	std::size_t m_rows{};
-	std::size_t m_cols{};
-	std::vector<T> m_cells{};
+    std::size_t m_rows{};
+    std::size_t m_cols{};
+    std::vector<T> m_cells{};
 };
 
 /////////////////////////////////////////////////////////////////////
 template<typename T>
 inline Matrix<T>::Matrix(std::size_t rows, std::size_t cols, const T& val) :
-	m_rows{rows},
-	m_cols{cols},
-	m_cells(rows*cols, val)
+    m_rows{rows},
+    m_cols{cols},
+    m_cells(rows*cols, val)
 {
 
 }
@@ -129,40 +129,40 @@ inline Matrix<T>& Matrix<T>::operator=(const std::initializer_list<std::initiali
 template<typename T>
 inline void Matrix<T>::checkAccess(std::size_t n) const
 {
-	if(m_cells.empty())
-		throw(std::runtime_error{"Access on empty container"});
-	if(n >= m_cells.size())
-		throw(std::runtime_error{"Access out of range"});
+    if(m_cells.empty())
+        throw(std::runtime_error{"Access on empty container"});
+    if(n >= m_cells.size())
+        throw(std::runtime_error{"Access out of range"});
 }
 
 template<typename T>
 inline T& Matrix<T>::operator[](std::size_t n)
 {
-	checkAccess(n);
-	return m_cells[n];
+    checkAccess(n);
+    return m_cells[n];
 }
 
 template<typename T>
 inline const T& Matrix<T>::operator[](std::size_t n) const
 {
-	checkAccess(n);
-	return m_cells[n];
+    checkAccess(n);
+    return m_cells[n];
 }
 
 template<typename T>
 inline T& Matrix<T>::operator()(std::size_t row, std::size_t col)
 {
-	const std::size_t index = (row*m_cols) + col;
-	checkAccess(index);
-	return m_cells[index];
+    const std::size_t index = (row*m_cols) + col;
+    checkAccess(index);
+    return m_cells[index];
 }
 
 template<typename T>
 inline const T& Matrix<T>::operator()(std::size_t row, std::size_t col) const
 {
-	const std::size_t index = (row*m_cols) + col;
-	checkAccess(index);
-	return m_cells[index];
+    const std::size_t index = (row*m_cols) + col;
+    checkAccess(index);
+    return m_cells[index];
 }
 
 #endif // !MATRIX_HPP_INCLUDED
