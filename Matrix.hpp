@@ -49,7 +49,7 @@ class Matrix
 
 public:
     Matrix() = delete;
-	Matrix(std::size_t rows, std::size_t cols, const T& val = T{});
+    Matrix(std::size_t rows, std::size_t cols, const T& val = T{});
     Matrix(const std::initializer_list<std::initializer_list<T>>&);
     Matrix<T>& operator=(const std::initializer_list<std::initializer_list<T>>&);
 
