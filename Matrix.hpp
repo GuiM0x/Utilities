@@ -24,28 +24,10 @@
 template<typename T>
 class Matrix
 {
-    ///////////////
-
-    friend std::ostream& operator<<(std::ostream& os, const Matrix& m){
-        if(!m.empty()){
-            for(unsigned i = 0; i < m.m_rows; ++i){
-                for(unsigned j = 0; j < m.m_cols; ++j){
-                    os << m(i, j) << ' ';
-                }
-                os << '\n';
-            }
-        }
-        return os;
-    }
-
-    ///////////////
-
     using iterator               = typename std::vector<T>::iterator;
     using const_iterator         = typename std::vector<T>::const_iterator;
     using reverse_iterator       = typename std::vector<T>::reverse_iterator;
     using const_reverse_iterator = typename std::vector<T>::const_reverse_iterator;
-
-    ///////////////
 
 public:
     Matrix() = delete;
