@@ -17,6 +17,8 @@
 #define MATRIX_HPP_INCLUDED
 
 #include <vector>
+#include <algorithm>
+#include <stdexcept>
 #include <initializer_list>
 #include <cassert>
 
@@ -40,7 +42,7 @@ public:
     std::size_t size() const { return m_cells.size();  }
     std::size_t rows() const { return m_rows;          }
     std::size_t cols() const { return m_cols;          }
-	
+
 public:
     void init(std::size_t rows, std::size_t cols, const T& val = T{});
 
