@@ -2,7 +2,7 @@
 
 ##### Classes
 
-- Matrix
+- Matrix (2D)
 - Date
 
 ##### Tools (all functions)
