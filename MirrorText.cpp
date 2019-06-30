@@ -1,6 +1,23 @@
+/////////////////////////////////////////////////////////////////////////////////////
+/*                                                                                 */
+/*   MirrorText.cpp                                                                */
+/*   -----------------------                                                       */
+/*   Author : Guit0x                                                               */
+/*                                                                                 */
+/*   Type            : Program (terminal)                                          */
+/*   OS Dependencies : none                                                        */
+/*   Library Used    : STL                                                         */
+/*   Namespace       : gx                                                          */
+/*                                                                                 */
+/*   Date contains only one static function to get date (return string).           */
+/*                                                                                 */
+/////////////////////////////////////////////////////////////////////////////////////
+
 #include <iostream>
 #include <fstream>
 #include <map>
+
+namespace gx{
 
 class TextMirror
 {
@@ -145,12 +162,14 @@ std::string TextMirror::computeMirrorVersion(const std::string& text) const
     return mirrorVersion;
 }
 
+}
+
 
 int main()
 {
-    TextMirror mirror{};
+    gx::TextMirror mirror{};
 
-    const std::string text = "Yo !\nComo esta da la casa bonita ?";
+    const std::string text = "Hello World !\nHow are you today ?";
     const std::string reverseText = mirror.computeMirrorVersion(text);
 
     std::ofstream ofs{"C:/Users/Guit0x/Desktop/test.txt"};
