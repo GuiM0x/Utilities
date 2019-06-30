@@ -22,7 +22,6 @@ int rollTheDice(int valmin, int valmax);
 ----------------------------------------
 
 ##### Mirror Text 0.1 (update coming soon)
-======
 
 A little program that reverse text horizontally.
 
