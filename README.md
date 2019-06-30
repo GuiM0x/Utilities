@@ -5,7 +5,7 @@
 - Matrix (2D)
 - Date
 
-=========================================================
+======
 
 ##### Tools (all functions)
 
@@ -18,7 +18,7 @@ std::ostream& allOccurInString(std::ostream& os, std::string str, const bool& ca
 std::ostream& allOccurInTextFile(std::ostream& os, const std::string& filePath, const bool& caseSensitive = true);
 int rollTheDice(int valmin, int valmax);
 ```
-=========================================================
+======
 
 ##### Mirror Text 0.1 (update coming soon)
 
