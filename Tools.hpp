@@ -141,17 +141,17 @@ namespace gx {
 /////////////////////////////////////////////////////////////////////////////////////
 
 	///// DEG To RAD
-	float degToRad(float angle_rad)
+	float degToRad(float deg)
 	{
 		const float PI{3.141592};
-		return float{(angle_rad * PI) / 180.f};
+		return float{(deg * PI) / 180.f};
 	}
 	
 	///// RAD TO DEG
-	float radToDeg(float angle_deg)
+	float radToDeg(float rad)
 	{
 		const float PI{3.141592};
-		return float{(angle_deg * 180.f) / PI};
+		return float{(rad * 180.f) / PI};
 	}
 
 } // namsepace gx end !
